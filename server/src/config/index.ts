@@ -35,5 +35,11 @@ export default {
 
   pinata_gateway_url: process.env.GATEWAY_URL,
 
-  pinata_jwt: process.env.PINATA_JWT
+  pinata_jwt: process.env.PINATA_JWT,
+
+  spotify: {
+    redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
+    client_id: process.env.SPOTIFY_CLIENT_ID,
+    client_secret: process.env.SPOTIFY_CLIENT_SECRET,
+  }
 };
