@@ -19,13 +19,13 @@ const uploadEventURI = async (eventName: string) => {
   }
 };
 
-async function upload() {
-  try {
-    const blob = new Blob([fs.readFileSync('./hello-world.txt')]);
-    const file = new File([blob], 'hello-world.txt', { type: 'text/plain' });
-    const upload = await pinata.upload.file(file);
-    console.log(upload);
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function upload() {
+//   try {
+//     const blob = new Blob([fs.readFileSync('./hello-world.txt')]);
+//     const file = new File([blob], 'hello-world.txt', { type: 'text/plain' });
+//     const upload = await pinata.upload.file(file);
+//     console.log(upload);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

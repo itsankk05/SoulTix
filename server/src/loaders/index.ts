@@ -2,7 +2,7 @@ import { PinataSDK } from 'pinata-web3';
 import config from '../config';
 import database from './database';
 import express from './express';
-import Logger from './logger';
+import Logger from '../utils/logger';
 import Express from 'express';
 
 export default async ({ expressApp }: { expressApp: Express.Application }): Promise<void> => {
@@ -14,7 +14,7 @@ export default async ({ expressApp }: { expressApp: Express.Application }): Prom
 
   const pinata = await new PinataSDK({
     pinataJwt: process.env.PINATA_JWT,
-    pinataGateway: process.env.GATEWAY_URL
-  })
+    pinataGateway: process.env.GATEWAY_URL,
+  });
   Logger.info('✅ All modules loaded!');
 };

@@ -2,7 +2,7 @@ import express from 'express';
 
 import config from './config';
 import Loaders from './loaders';
-import Logger from './loaders/logger';
+import Logger from './utils/logger';
 
 async function startServer() {
   const app = express();

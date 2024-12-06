@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { randomUUID } from 'crypto';
 import database from '../../loaders/database';
 
-export const handleCreateEvent = async (eventData) => {
+export const handleCreateEvent = async eventData => {
   // Validate eventData inputs
   const { name, date, location, price, userWalletAddress } = eventData;
 
@@ -30,7 +30,7 @@ export const handleCreateEvent = async (eventData) => {
     name,
     date,
     location,
-    createdBy: artistWalletAddress,
+    // createdBy: artistWalletAddress,
   };
 
   // Insert concert event into the database
