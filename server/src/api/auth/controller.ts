@@ -1,15 +1,47 @@
-import { Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
-import { handleCreateUser } from './service';
+import { handleCreateUser, handleFetchUserData } from './service';
 import { jwtReq } from '../../types';
 import { StatusCodes } from 'http-status-codes';
 
-export const createUserOrLogin = catchAsync(async (req: jwtReq, res: Response, next: NextFunction) => {
-  const walletAddress: string = req.user.walletAddress;
-  await handleCreateUser(walletAddress);
+export const createUserOrLogin = catchAsync(async (req: Request, res: Response) => {
+  /**
+   * Body Sample:
+   * {
+   *  walletAddress: "0x1234"
+   * }
+   */
+  const walletAddress: string = req.body.walletAddress;
+  const newUser = await handleCreateUser(walletAddress);
 
   res.status(StatusCodes.CREATED).json({
     success: true,
-    message: 'User created successfully',
+    message: newUser.isSignUp ? 'User Signup successfully' : 'User Login Successful',
+    data: {
+      token: newUser.token,
+    },
+  });
+});
+
+export const getUserData = catchAsync(async (req: jwtReq, res: Response) => {
+  const walletAddress: string = req.user.walletAddress;
+  const userData = await handleFetchUserData(walletAddress);
+
+  if (!userData) {
+    res.status(StatusCodes.NOT_FOUND).json({
+      success: true,
+      message: 'User Not Found',
+      data: {
+        user: {},
+      },
+    });
+  }
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    message: 'User Data fetched successfully',
+    data: {
+      user: userData,
+    },
   });
 });
