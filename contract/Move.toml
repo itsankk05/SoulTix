@@ -1,0 +1,19 @@
+[package]
+name = "soultix"
+version = "1.0.0"
+authors = []
+
+[addresses]
+soultix_addr ="0xdb29ca185f0be5d8ab49eb376cb1306c8f5a016878ff90957e058488a80bf29f"
+std = "0x1"
+aptos_std = "0x1"
+supra_framework = "0x1"
+aptos_token_objects = "0x4"
+
+[dev-addresses]
+
+[dependencies]
+SupraFramework = { git = "https://github.com/Entropy-Foundation/aptos-core.git", rev = "dev", subdir = "aptos-move/framework/supra-framework" }
+AptosTokenObjects = { git = "https://github.com/Entropy-Foundation/aptos-core.git", rev = "dev", subdir = "aptos-move/framework/aptos-token-objects" }
+
+[dev-dependencies]

@@ -1,0 +1,17 @@
+{
+  "name": "soultix-contract",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "init-supra": "alias supra=\"docker exec -it supra_cli /supra/supra\"",
+    "move:compile": "supra move tool compile --package-dir /supra/configs/move_workspace/soultix",
+    "move:test": "supra move tool test --package-dir /supra/configs/move_workspace/soultix",
+    "move:publish": "supra move tool publish --package-dir /supra/configs/move_workspace/soultix --profile test2 --url https://rpc-testnet.supra.com",
+    "move:upgrade": "node ./scripts/move/upgrade"
+  },
+  "author": "zaid",
+  "license": "MIT"
+}
