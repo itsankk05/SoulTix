@@ -1,3 +1,8 @@
+# Transactions
+https://testnet.suprascan.io/address/0xdb29ca185f0be5d8ab49eb376cb1306c8f5a016878ff90957e058488a80bf29f/f?tab=addr-transaction&pageNo=1&rows=10
+
+https://testnet.suprascan.io/address/0xce0d4375a94ff090d15653bc9ee8d98b98b38386f31830e8b4b2826bd7087a0d/f?tab=addr-transaction&pageNo=1&rows=10
+
 # Scripts
 
 `supra move tool publish --package-dir /supra/configs/move_workspace/soultix --profile test6 --url https://rpc-testnet.supra.com`
