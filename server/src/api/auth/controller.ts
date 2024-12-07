@@ -12,6 +12,15 @@ export const createUserOrLogin = catchAsync(async (req: Request, res: Response) 
    * }
    */
   const walletAddress: string = req.body.walletAddress;
+
+  if (!walletAddress) {
+    res.status(StatusCodes.BAD_REQUEST).json({
+      success: false,
+      message: 'Wallet Address is NULL',
+      data: {},
+    });
+  }
+
   const newUser = await handleCreateUser(walletAddress);
 
   res.status(StatusCodes.CREATED).json({
