@@ -14,6 +14,7 @@ import GaugeChart from "../components/animata/gauge-chart";
 import art3 from "../images/art3.jpg";
 import ConnectButton from "../components/ConnectButton";
 import TopArtists from "../components/TopArtists";
+import Profile from "../components/animata/widget/Profile";
 
 export default function Dashboard() {
   const { connected, account, connect } = useWallet();
@@ -46,42 +47,17 @@ export default function Dashboard() {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto text-center xl:max-w-2xl">
             <h2 className="text-3xl font-bold leading-tight text-gray-50 sm:text-4xl xl:text-5xl mb-6 my-10">
-              Dashboard
+              Profile
             </h2>
           </div>
           {/* <hr /> */}
           <br />
           {/* user profile */}
-          <div className="flex flex-col items-center justify-center space-y-2">
-            {/* <div>User: {accountAddress}</div> */}
-            <div className="">
-              <div className="flex flex-col items-center justify-center space-y-2 text-lg mb-4">
-                Connect what you Listen
-              </div>
-              <div className="flex items-center justify-center gap-8">
-                {/* <button className="flex items-center gap-2 bg-[#1DB954] hover:bg-[#1ed760] text-white px-4 py-2 rounded-full transition-all duration-200 font-medium">
-                  <img
-                    src={spotify}
-                    alt="Spotify"
-                    className="w-6 h-6 object-contain"
-                  />
-                  <span>Spotify</span>
-                </button> */}
-                <ConnectButton></ConnectButton>
-
-                {/* <div className="m-16">
-                  <h1>Spotify </h1>
-                  {!token ? (
-                    <SpotifyLoginButton
-                      CLIENT_ID={CLIENT_ID}
-                      REDIRECT_URI={REDIRECT_URI}
-                    />
-                  ) : (
-                    <button onClick={logout}>Logout</button>
-                  )}
-                  {/* ... rest of your component ... */}
-                {/* </div>  */}
-
+          <div className="flex items-center justify-center gap-4">
+            <Profile />
+            <div className="flex  bg-[#27272a] w-[210px] h-[210px] rounded-3xl justify-center items-center">
+              <div className="flex flex-col  gap-4">
+                <ConnectButton />
                 <button className="flex items-center gap-2 bg-gradient-to-r from-[#FB5C74] to-[#FA233B] hover:from-[#FA233B] hover:to-[#FB5C74] text-white px-4 py-2 rounded-full transition-all duration-200 font-medium">
                   <img
                     src={apple}
@@ -90,7 +66,6 @@ export default function Dashboard() {
                   />
                   <span>Apple Music</span>
                 </button>
-
                 <button className="flex items-center gap-2 bg-[#FF0000] hover:bg-red-600 text-white px-4 py-2 rounded-full transition-all duration-200 font-medium">
                   <img
                     src={yt}
@@ -100,7 +75,6 @@ export default function Dashboard() {
                   <span>YouTube Music</span>
                 </button>
               </div>
-              <div>{/* <FanScoreCalculator /> */}</div>
             </div>
           </div>
           <br />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PinataSDK } from "pinata";
 
 function UploadPage() {
   const [selectedFile, setSelectedFile]: any = useState();
@@ -11,8 +12,18 @@ function UploadPage() {
 
   // State for ticket quantities
   const [goldTickets, setGoldTickets] = useState(0);
+  const [goldTicketPrice, setGoldTicketPrice] = useState(0);
+
   const [silverTickets, setSilverTickets] = useState(0);
+  const [silverTicketPrice, setSilverTicketPrice] = useState(0);
+
   const [platinumTickets, setPlatinumTickets] = useState(0);
+  const [platinumTicketPrice, setPlatinumTicketPrice] = useState(0);
+
+  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [goldImage, setGoldImage] = useState<File | null>(null);
+  const [silverImage, setSilverImage] = useState<File | null>(null);
+  const [platinumImage, setPlatinumImage] = useState<File | null>(null);
 
   const changeHandler = (event: any) => {
     setSelectedFile(event.target.files[0]);
@@ -47,18 +58,21 @@ function UploadPage() {
       console.log(resData);
 
       const metaData = {
-        name: { name },
-        description: { description },
-        venue: { venue },
-        event_date: { eventDate },
-        booking_date: { bookingDate },
+        name: name,
+        description: `${description} | Venue: ${venue} | Event Date: ${eventDate} | Booking Date: ${bookingDate}`,
         image: `ipfs://${resData.IpfsHash}`,
         tickets: {
           gold: goldTickets,
           silver: silverTickets,
           platinum: platinumTickets,
         },
+        price: {
+          gold_ticket_price: goldTicketPrice,
+          silver_ticket_price: silverTicketPrice,
+          platinum_ticket_price: platinumTicketPrice,
+        },
       };
+
       console.log(metaData);
     } catch (error) {
       console.log(error);
@@ -67,8 +81,8 @@ function UploadPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-white">
-      <div className="pt-20 pb-10 text-2xl">Add Event</div>
-      <div className="bg-gray-800 p-4 rounded-md flex items-center">
+      <div className="pt-20 pb-10 text-3xl ">Add Event</div>
+      <div className=" p-4 rounded-md flex items-center w-[550px] h-[600px] justify-center">
         <div className="flex flex-col gap-2">
           <form className="max-w-md mx-auto">
             <div className="relative z-0 w-full mb-5 group">
@@ -136,36 +150,94 @@ function UploadPage() {
 
             {/* Ticket Section */}
             <div className="mt-5">
-              <h3 className="text-lg font-bold">Ticket Types</h3>
+              <h3 className="text-lg font-bold my-2">Ticket Types</h3>
+              <div className="flex my-4 gap-12 items-center justify-center">
+                <div>Number of Tickets</div>
+                <div>Price of Tickets</div>
+              </div>
               <div className="flex flex-col gap-4">
-                <div className="flex justify-between">
-                  <label className="text-sm">Gold Tickets:</label>
+                {/* Gold Tickets */}
+                <div className="flex justify-between items-center gap-4">
+                  <label className="text-sm flex-1">Gold Tickets:</label>
                   <input
                     type="number"
                     min="0"
                     value={goldTickets}
                     onChange={(e) => setGoldTickets(Number(e.target.value))}
-                    className="bg-gray-700 text-white border border-gray-600 rounded p-2"
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Count"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    value={goldTicketPrice}
+                    onChange={(e) => setGoldTicketPrice(Number(e.target.value))}
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Price"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) =>
+                      e.target.files && setGoldImage(e.target.files[0])
+                    }
                   />
                 </div>
-                <div className="flex justify-between">
-                  <label className="text-sm">Silver Tickets:</label>
+
+                {/* Silver Tickets */}
+                <div className="flex justify-between items-center gap-4">
+                  <label className="text-sm flex-1">Silver Tickets:</label>
                   <input
                     type="number"
                     min="0"
                     value={silverTickets}
                     onChange={(e) => setSilverTickets(Number(e.target.value))}
-                    className="bg-gray-700 text-white border border-gray-600 rounded p-2"
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Count"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    value={silverTicketPrice}
+                    onChange={(e) =>
+                      setSilverTicketPrice(Number(e.target.value))
+                    }
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Price"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) =>
+                      e.target.files && setSilverImage(e.target.files[0])
+                    }
                   />
                 </div>
-                <div className="flex justify-between">
-                  <label className="text-sm">Platinum Tickets:</label>
+
+                {/* Platinum Tickets */}
+                <div className="flex justify-between items-center gap-4">
+                  <label className="text-sm flex-1">Platinum Tickets:</label>
                   <input
                     type="number"
                     min="0"
                     value={platinumTickets}
                     onChange={(e) => setPlatinumTickets(Number(e.target.value))}
-                    className="bg-gray-700 text-white border border-gray-600 rounded p-2"
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Count"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    value={platinumTicketPrice}
+                    onChange={(e) =>
+                      setPlatinumTicketPrice(Number(e.target.value))
+                    }
+                    className="bg-gray-700 text-white border border-gray-600 rounded p-2 flex-1"
+                    placeholder="Price"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) =>
+                      e.target.files && setPlatinumImage(e.target.files[0])
+                    }
                   />
                 </div>
               </div>

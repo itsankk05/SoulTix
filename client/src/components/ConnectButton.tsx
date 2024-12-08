@@ -9,7 +9,7 @@ const ConnectButton = () => {
       redirectUri
     )}&scope=${encodeURIComponent(scopes.join(" "))}`;
 
-    window.location.href = authUrl; // Redirects to Spotify login
+    window.location.href = authUrl;
   };
 
   return (

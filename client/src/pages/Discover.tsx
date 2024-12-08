@@ -10,8 +10,10 @@ export default function Discover() {
   const events = [
     {
       id: "1",
-      name: "ColdPlay",
-      artist: "Beyoncé",
+      name: "World Of Spheres",
+      artist: "Coldplay",
+      description:
+        "Coldplay are considered one of the most influential groups of the 21st century. According to Steve Baltin from Forbes, they have become the standard for the contemporary alternative scene",
       image: concert,
       bookingstartDate: "2024-04-01T10:00:00Z",
       bookingendDate: "2024-06-15T23:59:59Z",
@@ -43,8 +45,11 @@ export default function Discover() {
     },
     {
       id: "2",
-      name: "Alan Walker",
-      artist: "Taylor Swift",
+      name: "Different World",
+      artist: "Alan Walker",
+      description:
+        "Coldplay are considered one of the most influential groups of the 21st century. According to Steve Baltin from Forbes, they have become the standard for the contemporary alternative scene",
+
       image: alan,
       bookingstartDate: "2024-05-01T10:00:00Z",
       bookingendDate: "2024-07-15T23:59:59Z",
@@ -76,8 +81,11 @@ export default function Discover() {
     },
     {
       id: "3",
-      name: "Travis Scott",
-      artist: "Taylor Swift",
+      name: "Mathematics Tour",
+      description:
+        "Coldplay are considered one of the most influential groups of the 21st century. According to Steve Baltin from Forbes, they have become the standard for the contemporary alternative scene",
+
+      artist: "Ed Sheeran",
       image: art1,
       bookingstartDate: "2024-05-01T10:00:00Z",
       bookingendDate: "2024-07-15T23:59:59Z",
@@ -110,6 +118,9 @@ export default function Discover() {
     {
       id: "4",
       name: "Eminem",
+      description:
+        "Coldplay are considered one of the most influential groups of the 21st century. According to Steve Baltin from Forbes, they have become the standard for the contemporary alternative scene",
+
       artist: "Taylor Swift",
       image: art2,
       bookingstartDate: "2024-05-01T10:00:00Z",
@@ -150,12 +161,13 @@ export default function Discover() {
         initialText="Hand-crafted ✍️ interaction animation on internet"
         backgroundImage={item.image}
       /> */}
-      <div className="grid max-w-4xl lg:max-w-6xl grid-cols-1 mx-auto mt-8 text-center gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left">
+      <div className="grid max-w-4xl text-white lg:max-w-6xl grid-cols-1 mx-auto mt-8 text-center gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left">
         {events.map((item, index) => (
           <Link key={index} to={`/event/${item.id}`}>
             <SwapTextCard
-              finalText="Animata is developed by a passionate team of developers who love animations. We study the best interactions from top websites and bring them to you, saving you hours of development time."
-              initialText="Hand-crafted ✍️ interaction animation on internet"
+              title={item.artist}
+              finalText={item.description}
+              initialText={item.name}
               backgroundImage={item.image}
             />
             {/* <div

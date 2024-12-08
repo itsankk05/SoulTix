@@ -57,7 +57,18 @@ export function useMediaQuery(
 
   return matches;
 }
-
+const customImageURLs = [
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/adele.jpg?t=2024-12-07T19%3A41%3A47.596Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/Marley%20Baba.jpg?t=2024-12-07T19%3A49%3A30.109Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/lana.jpg?t=2024-12-07T19%3A49%3A28.021Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/khalid.jpg?t=2024-12-07T19%3A49%3A25.860Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/eminem.avif?t=2024-12-07T19%3A49%3A23.182Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/ed%20sheeran.jpg?t=2024-12-07T19%3A49%3A20.856Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/drake.jpg?t=2024-12-07T19%3A49%3A18.773Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/Coldplay.jpg?t=2024-12-07T19%3A49%3A16.684Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/Bruno.jpg?t=2024-12-07T19%3A49%3A14.219Z",
+  "https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Artist/billie2.jpg?t=2024-12-07T19%3A49%3A07.690Z",
+];
 const keywords = [
   "night",
   "city",
@@ -174,10 +185,7 @@ function ThreeDPhotoCarousel() {
   const [activeImg, setActiveImg] = useState<string | null>(null);
   const [isCarouselActive, setIsCarouselActive] = useState(true);
   const controls = useAnimation();
-  const cards = useMemo(
-    () => keywords.map((keyword) => `https://picsum.photos/200/300?${keyword}`),
-    []
-  );
+  const cards = useMemo(() => customImageURLs, []);
 
   useEffect(() => {
     console.log("Cards loaded:", cards);

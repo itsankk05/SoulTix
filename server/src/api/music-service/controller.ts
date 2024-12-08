@@ -4,7 +4,7 @@ import { handleFetchUserData, spotifyAPICall } from './service';
 import { jwtReq } from '../../types';
 import { StatusCodes } from 'http-status-codes';
 
-export const handleSpotify = catchAsync(async (req: jwtReq, res: Response) => {
+export const handleSpotify = catchAsync(async (req: Request, res: Response) => {
   /**
    * Body Sample:
    * {

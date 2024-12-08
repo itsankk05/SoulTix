@@ -4,6 +4,6 @@ import { handleSpotify } from './controller';
 
 const musicServiceRouter = Router();
 
-musicServiceRouter.post('/spotify-api', auth, handleSpotify);
+musicServiceRouter.post('/spotify-api', handleSpotify);
 
 export default musicServiceRouter;

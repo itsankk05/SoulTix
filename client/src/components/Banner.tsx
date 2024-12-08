@@ -9,6 +9,7 @@ import {
 } from "../components/ui/reveal-card";
 import { ThreeDPhotoCarousel } from "./ui/three-d-carousel";
 import { TextGenerateEffect } from "../components/ui/text-generate-effect";
+import CycleText from "./animata/text/cycle-text";
 
 export default function Banner() {
   const [animate, setAnimate] = useState(false);
@@ -32,9 +33,8 @@ export default function Banner() {
           {/* <TextRevealCard
             text="You know the Song"
             revealText="I know the Artist "
-          >
-          </TextRevealCard> */}
-          Earn Your Artist
+          ></TextRevealCard> */}
+          <CycleText /> <span>Your Artist</span>{" "}
         </div>
       </div>
       <div className="w-full  flex flex-col items-center justify-center pt-24">
@@ -42,6 +42,7 @@ export default function Banner() {
           <ThreeDPhotoCarousel />
         </div>
       </div>
+      <br />
       <div className="flex flex-col items-center justify-center pt-24 w-full">
         {" "}
         <TextGenerateEffect words={words} />

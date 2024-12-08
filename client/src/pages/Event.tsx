@@ -118,9 +118,23 @@ export default function Event() {
                   </li>
                 ))}
               </ul>
-              <button className="px-12 py-4 mt-8 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200">
+              <button
+                className={`px-12 py-4 mt-8 rounded-full font-bold text-white tracking-widest uppercase transform transition-all duration-200 ${
+                  showGauge
+                    ? "bg-[#1ED760] hover:scale-105 hover:bg-[#21e065]"
+                    : "bg-gray-500 cursor-not-allowed"
+                }`}
+                onClick={() => {
+                  if (showGauge) {
+                    console.log("Buying now...");
+                  }
+                }}
+                disabled={!showGauge} // Disable if showGauge is false
+              >
                 Buy Now
               </button>
+
+              {/* Check FanScore Button */}
               <button
                 className="px-12 py-4 mt-8 ml-4 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#21e065] transition-colors duration-200"
                 onClick={() => setShowGauge(true)} // Update state on click

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 // import { Layout, Row, Col } from "antd";
 
-import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
-import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
+// import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
+// import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
+import StarkeyWalletConnector from "./StarKeyWalletConnector";
 
 export default function Navbar() {
   const [isActive, setActive] = useState(false);
@@ -21,8 +22,8 @@ export default function Navbar() {
           <div id="logo" className="basis-3/12 flex justify-start items-center">
             <a href="/">
               <img
-                className="w-10 h-10"
-                src="https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/soultix-logo.png?t=2024-12-02T03%3A30%3A50.177Z"
+                className="w-[80px] h-[80px] "
+                src="https://cngupugurzdczieryupu.supabase.co/storage/v1/object/public/unfold24/Soul-tix-bg-removed.png"
                 alt="Logo"
               />
             </a>
@@ -64,7 +65,7 @@ export default function Navbar() {
             </Link>
 
             <Link to="/dashboard" className="text-slate-400 hover:text-white">
-              Dashboard
+              Profile
             </Link>
             <Link to="/discover" className="text-slate-400 hover:text-white">
               Discover
@@ -76,11 +77,17 @@ export default function Navbar() {
             >
               Upload
             </Link>
+            <Link to="/nft-place" className="text-slate-400 hover:text-white">
+              Marketplace
+            </Link>
           </div>
           <div className="nav-contact basis-3/12 hidden lg:flex justify-end gap-3 items-center text-xs font-semibold font-Sora">
             {/*TODO: ADD BUTTON HERE <ConnectButton /> */}
 
-            <WalletSelector />
+            {/* <WalletSelector /> */}
+            <div>
+              <StarkeyWalletConnector></StarkeyWalletConnector>
+            </div>
           </div>
           <div role="dialog" aria-modal={isActive ? "false" : "true"}>
             <div
