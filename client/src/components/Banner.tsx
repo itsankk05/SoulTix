@@ -24,11 +24,11 @@ export default function Banner() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const words = "Description for Website";
+  const words = "Revolutionizing Ticket Allocation";
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center pt-24 w-full">
+      <div className="flex flex-col items-center justify-center pt-[50px] w-full">
         <div className="p-24 text-8xl text-white font-bold">
           {/* <TextRevealCard
             text="You know the Song"
@@ -45,6 +45,7 @@ export default function Banner() {
       <br />
       <div className="flex flex-col items-center justify-center pt-24 w-full">
         {" "}
+        <br />
         <TextGenerateEffect words={words} />
       </div>
     </>
